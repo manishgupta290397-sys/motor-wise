@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MotorWise Insurance | Manish Gupta - Auto Insurance Specialist</title>
+<meta name="description" content="MotorWise Insurance — Manish Gupta helps drivers in Kalwa, Thane find the right motor insurance policy, fast claims support, and honest advice.">
+<!-- Security hardening: restrict what this page is allowed to load/do -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'none'; upgrade-insecure-requests">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#132845;
+    --steel:#3D5A80;
+    --slate:#5C6B73;
+    --paper:#F6F8FA;
+    --paper-2:#ECF1F5;
+    --teal:#2E86AB;
+    --ink:#16202C;
+    --line:#D8E0E8;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Newsreader',serif;
+    font-weight:600;
+    color:var(--navy);
+    line-height:1.15;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  :focus-visible{outline:2px solid var(--teal);outline-offset:3px;}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,248,250,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Newsreader',serif;font-weight:600;font-size:1.25rem;color:var(--navy);}
+  .brand-mark{width:30px;height:30px;flex-shrink:0;}
+  .nav-links{display:flex;gap:32px;font-size:0.95rem;font-weight:500;}
+  .nav-links a{color:var(--slate);transition:color .15s;}
+  .nav-links a:hover{color:var(--teal);}
+  .nav-cta{
+    background:var(--navy);color:var(--white);padding:10px 20px;border-radius:6px;
+    font-weight:600;font-size:0.9rem;transition:background .15s;
+  }
+  .nav-cta:hover{background:var(--teal);}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .menu-btn span{display:block;width:22px;height:2px;background:var(--navy);margin:5px 0;}
+
+  /* Hero */
+  .hero{
+    position:relative;
+    padding:96px 24px 110px;
+    background:linear-gradient(180deg,var(--paper) 0%, var(--paper-2) 100%);
+    overflow:hidden;
+  }
+  .hero-inner{max-width:1120px;margin:0 auto;position:relative;z-index:2;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:0.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--teal);margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--teal);}
+  .hero h1{font-size:clamp(2.4rem,5vw,3.6rem);max-width:760px;letter-spacing:-.01em;}
+  .hero p.lede{
+    margin-top:22px;font-size:1.15rem;color:var(--slate);max-width:520px;
+  }
+  .hero-actions{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--navy);color:var(--white);padding:14px 28px;border-radius:6px;
+    font-weight:600;font-size:0.95rem;transition:background .15s,transform .15s;
+    display:inline-block;
+  }
+  .btn-primary:hover{background:var(--teal);transform:translateY(-1px);}
+  .btn-ghost{
+    border:1px solid var(--line);color:var(--navy);padding:14px 28px;border-radius:6px;
+    font-weight:600;font-size:0.95rem;background:var(--white);transition:border-color .15s;
+  }
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal);}
+
+  /* Layered shield signature graphic */
+  .layers{
+    position:absolute; right:-40px; top:50%; transform:translateY(-50%);
+    width:460px; height:460px; z-index:1; opacity:0.9;
+  }
+  @media (max-width:900px){ .layers{display:none;} }
+
+  .trust-strip{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--white);
+  }
+  .trust-strip .wrap{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 24px; flex-wrap:wrap; gap:18px;
+    font-size:0.85rem; color:var(--slate); letter-spacing:.03em;
+  }
+  .trust-strip strong{color:var(--navy); font-weight:600;}
+
+  .banner-promo{
+    padding:0; background:var(--white);
+  }
+  .banner-promo .wrap{
+    padding:48px 24px; max-width:1120px;
+  }
+  .banner-promo img{
+    width:100%; height:auto; border-radius:12px;
+    box-shadow:0 8px 30px rgba(19,40,69,0.12);
+    border:1px solid var(--line);
+  }
+
+  /* Sections */
+  section{padding:96px 0;}
+  .section-head{max-width:620px; margin-bottom:56px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.4rem);}
+  .section-head p{color:var(--slate); margin-top:16px; font-size:1.05rem;}
+
+  /* About */
+  .about{background:var(--white);}
+  .about-grid{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:center;
+  }
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr;} }
+  .about-photo{
+    aspect-ratio:4/5; border-radius:8px;
+    background:linear-gradient(155deg,var(--steel) 0%, var(--navy) 100%);
+    display:flex;align-items:end;justify-content:start;position:relative;overflow:hidden;
+  }
+  .about-photo::after{
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(115deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 40px);
+  }
+  .about-photo-label{
+    position:relative;color:var(--white);padding:24px;font-family:'Newsreader',serif;font-size:1.1rem;
+  }
+  .about-copy p{color:var(--slate); margin-bottom:18px; font-size:1.02rem;}
+  .credentials{
+    display:flex; gap:28px; margin-top:28px; padding-top:28px; border-top:1px solid var(--line); flex-wrap:wrap;
+  }
+  .credential .num{font-family:'Newsreader',serif; font-size:1.9rem; color:var(--navy); font-weight:600;}
+  .credential .label{font-size:0.82rem; color:var(--slate); margin-top:2px;}
+
+  /* Services */
+  .services{background:var(--paper-2);}
+  .service-grid{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--line);
+    border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  }
+  @media (max-width:980px){ .service-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .service-grid{grid-template-columns:1fr;} }
+  .service-card{
+    background:var(--white); padding:32px 22px; transition:background .15s;
+  }
+  .service-card:hover{background:var(--paper);}
+  .service-icon{width:38px;height:38px;margin-bottom:20px;color:var(--teal);}
+  .service-card h3{font-size:1.15rem; margin-bottom:10px;}
+  .service-card p{font-size:0.92rem; color:var(--slate);}
+
+  /* Contact */
+  .contact{background:var(--navy); color:var(--white);}
+  .contact .section-head h2{color:var(--white);}
+  .contact .section-head p{color:#B7C4D6;}
+  .contact .eyebrow{color:#7FB8D9;}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px;}
+  @media (max-width:860px){ .contact-grid{grid-template-columns:1fr; gap:40px;} }
+  .contact-info-item{display:flex; gap:16px; margin-bottom:28px;}
+  .contact-info-item svg{width:22px;height:22px; color:#7FB8D9; flex-shrink:0; margin-top:2px;}
+  .contact-info-item .label{font-size:0.8rem; text-transform:uppercase; letter-spacing:.06em; color:#8EA3BE;}
+  .contact-info-item .value{font-size:1.02rem; margin-top:3px;}
+
+  form{display:flex; flex-direction:column; gap:18px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media (max-width:520px){ .form-row{grid-template-columns:1fr;} }
+  label{font-size:0.82rem; font-weight:600; letter-spacing:.03em; margin-bottom:7px; display:block; color:#C7D3E3;}
+  input,select,textarea{
+    width:100%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.18);
+    border-radius:6px; padding:12px 14px; color:var(--white); font-family:'Inter',sans-serif; font-size:0.95rem;
+  }
+  input::placeholder,textarea::placeholder{color:#8395AC;}
+  input:focus,select:focus,textarea:focus{border-color:var(--teal); background:rgba(255,255,255,0.09);}
+  textarea{resize:vertical; min-height:110px;}
+  .form-submit{
+    background:var(--teal); color:var(--white); border:none; padding:15px 28px; border-radius:6px;
+    font-weight:600; font-size:0.95rem; cursor:pointer; transition:background .15s; margin-top:6px; align-self:flex-start;
+  }
+  .form-submit:hover{background:#3A9BC1;}
+  select option{color:var(--ink);}
+
+  footer{
+    background:var(--navy); border-top:1px solid rgba(255,255,255,0.1);
+    padding:28px 0; color:#8EA3BE; font-size:0.85rem;
+  }
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;}
+  footer a{color:#B7C4D6;}
+  footer a:hover{color:var(--white);}
+
+  @media (max-width:720px){
+    .nav-links{display:none;}
+    .menu-btn{display:block;}
+  }
+
+  /* Scroll reveal — minimal fade + slide, staggered where grouped */
+  .reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity 0.7s cubic-bezier(.2,.7,.2,1), transform 0.7s cubic-bezier(.2,.7,.2,1);
+    transition-delay:var(--reveal-delay, 0s);
+  }
+  .reveal.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+
+  /* Hero: gentle one-time entrance on page load (not scroll-tied) */
+  @keyframes heroIn{
+    from{opacity:0; transform:translateY(16px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .hero-inner > *{
+    animation:heroIn 0.8s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .hero-inner .eyebrow{animation-delay:0.05s;}
+  .hero-inner h1{animation-delay:0.15s;}
+  .hero-inner .lede{animation-delay:0.28s;}
+  .hero-inner .hero-actions{animation-delay:0.4s;}
+  @media (prefers-reduced-motion: reduce){
+    .hero-inner > *{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" fill="none">
+        <path d="M16 2 L28 7 V15 C28 22.5 22.8 27.8 16 30 C9.2 27.8 4 22.5 4 15 V7 Z" fill="#132845"/>
+        <path d="M16 2 L28 7 V15 C28 22.5 22.8 27.8 16 30 Z" fill="#2E86AB" opacity="0.55"/>
+      </svg>
+      MotorWise Insurance
+    </div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Coverage</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+    <button class="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Motor Insurance Specialist</span>
+    <h1>Motor insurance advice from someone who actually answers the phone.</h1>
+    <p class="lede">MotorWise Insurance helps drivers and businesses in Kalwa and across Thane find the right policy for cars, two-wheelers, and commercial vehicles — clear comparisons, fast claims support, no confusing jargon.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get a free quote</a>
+      <a href="#services" class="btn-ghost">See coverage options</a>
+    </div>
+  </div>
+  <svg class="layers" viewBox="0 0 400 400" fill="none">
+    <path d="M200 30 L340 85 V190 C340 280 280 345 200 375 C120 345 60 280 60 190 V85 Z" stroke="#3D5A80" stroke-width="1.5" opacity="0.35"/>
+    <path d="M200 70 L310 115 V195 C310 265 262 318 200 342 C138 318 90 265 90 195 V115 Z" stroke="#3D5A80" stroke-width="1.5" opacity="0.55"/>
+    <path d="M200 110 L280 145 V200 C280 252 244 292 200 310 C156 292 120 252 120 200 V145 Z" fill="#2E86AB" opacity="0.12" stroke="#2E86AB" stroke-width="1.5" opacity="0.8"/>
+    <path d="M200 150 L250 172 V205 C250 238 226 262 200 274 C174 262 150 238 150 205 V172 Z" fill="#132845"/>
+  </svg>
+</section>
+
+<div class="trust-strip reveal">
+  <div class="wrap">
+    <span><strong>6 years</strong> of experience in motor insurance</span>
+    <span><strong>1000+</strong> policies placed</span>
+    <span><strong>Auto, bike &amp; commercial</strong> vehicle cover</span>
+    <span><strong>Based in</strong> Kalwa, Thane</span>
+  </div>
+</div>
+
+<section class="banner-promo reveal">
+  <div class="wrap">
+    <img src="banner.png" alt="MotorWise Insurance — Manish Gupta, Vehicle & General Insurance Advisor. All type of vehicle insurance available: 2 wheeler, 3 wheeler, car, truck, and commercial vehicles. Call 8080008300." loading="lazy">
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo reveal">
+      <div class="about-photo-label">Manish Gupta</div>
+    </div>
+    <div class="about-copy reveal" style="--reveal-delay:0.12s">
+      <span class="eyebrow">About Your Agent</span>
+      <h2>Straight answers from someone who lives here too.</h2>
+      <p>Manish Gupta has spent 6 years helping drivers across Kalwa and Thane sort through motor insurance options that actually make sense — not just the first policy a call center reads off a script. Manish focuses only on auto and two-wheeler insurance, so every recommendation comes from real specialization, not a generalist trying to cover every product.</p>
+      <p>Whether you're insuring a new car, renewing an old policy, or filing a claim after an accident, the goal is the same: coverage you understand, priced fairly, from someone you can actually call.</p>
+      <div class="credentials">
+        <div class="credential"><div class="num">6</div><div class="label">Years of experience</div></div>
+        <div class="credential"><div class="num">1000+</div><div class="label">Policies placed</div></div>
+        <div class="credential"><div class="num">100%</div><div class="label">Focused on motor insurance</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Coverage</span>
+      <h2>Motor insurance, done right</h2>
+      <p>MotorWise deals exclusively in auto and two-wheeler insurance — so every quote is backed by real specialist knowledge, not a generalist checklist.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card reveal" style="--reveal-delay:0s">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 13l1.5-5A2 2 0 0 1 6.4 6.5h11.2A2 2 0 0 1 19.5 8L21 13v6a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H6v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-6Z"/><circle cx="7" cy="14.5" r="1.2"/><circle cx="17" cy="14.5" r="1.2"/></svg>
+        <h3>Comprehensive Cover</h3>
+        <p>Full protection against accidents, theft, fire, and natural calamities for your car or bike.</p>
+      </div>
+      <div class="service-card reveal" style="--reveal-delay:0.08s">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-4Z"/></svg>
+        <h3>Third-Party Liability</h3>
+        <p>Mandatory legal cover for damage or injury caused to others, at the most competitive rates.</p>
+      </div>
+      <div class="service-card reveal" style="--reveal-delay:0.16s">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M5 8l7-5 7 5M5 8v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8"/></svg>
+        <h3>Zero Depreciation Add-on</h3>
+        <p>Get full claim value on repairs without deductions for wear and tear on your vehicle's parts.</p>
+      </div>
+      <div class="service-card reveal" style="--reveal-delay:0.24s">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+        <h3>Claims Assistance</h3>
+        <p>Hands-on support through the entire claims process — from filing to settlement, no runaround.</p>
+      </div>
+      <div class="service-card reveal" style="--reveal-delay:0.32s">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="9" width="12" height="8" rx="1"/><path d="M13.5 12h4l3 3v2h-7z"/><circle cx="5.5" cy="18.5" r="1.6"/><circle cx="17" cy="18.5" r="1.6"/></svg>
+        <h3>Commercial Vehicle Insurance</h3>
+        <p>We also cover trucks, autos, and other commercial vehicles — not just personal cars and bikes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Get In Touch</span>
+      <h2>Get a free, no-pressure quote</h2>
+      <p>Tell us a bit about what you need covered — we'll follow up within one business day with real options.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="contact-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2Z"/></svg>
+          <div><div class="label">Phone</div><div class="value">+91 80800 08300</div></div>
+        </div>
+        <div class="contact-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          <div><div class="label">Email</div><div class="value">motorwise1234@gmail.com</div></div>
+        </div>
+        <div class="contact-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+          <div><div class="label">Office</div><div class="value">Vastu Anand, Shop No. 62<br>Parsik Nagar, Kalwa<br>Thane – 400605, Maharashtra</div></div>
+        </div>
+        <div class="contact-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <div><div class="label">Hours</div><div class="value">Daily, 9:00 AM – 10:00 PM</div></div>
+        </div>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('This form is a placeholder — connect it to Formspree, Netlify Forms, or your email service to receive submissions.');" autocomplete="on">
+        <!-- Honeypot: hidden from real users, bots fill it in and get silently rejected -->
+        <div style="position:absolute; left:-9999px; opacity:0;" aria-hidden="true">
+          <label for="company_website">Leave this field blank</label>
+          <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="form-row">
+          <div><label for="name">Full name</label><input id="name" type="text" placeholder="Rohan Sharma" required maxlength="80" pattern="[A-Za-z\s.'-]+" title="Letters, spaces, and basic punctuation only"></div>
+          <div><label for="phone">Phone</label><input id="phone" type="tel" placeholder="98765 43210" required maxlength="15" pattern="[0-9+\s()-]{7,15}" title="A valid phone number"></div>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="rohan@email.com" required maxlength="120">
+        </div>
+        <div>
+          <label for="coverage">Coverage interested in</label>
+          <select id="coverage">
+            <option>Comprehensive Cover</option>
+            <option>Third-Party Liability</option>
+            <option>Zero Depreciation Add-on</option>
+            <option>Claims Assistance</option>
+            <option>Policy Renewal</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div>
+          <label for="message">Tell us a bit more</label>
+          <textarea id="message" placeholder="What are you looking to insure?" maxlength="800"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Request my quote</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 MotorWise Insurance. All rights reserved.</span>
+    <span><a href="#about">About</a> &nbsp;·&nbsp; <a href="#services">Coverage</a> &nbsp;·&nbsp; <a href="#contact">Contact</a></span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
