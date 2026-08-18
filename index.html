@@ -181,15 +181,13 @@
   @media (max-width:860px){ .about-grid{grid-template-columns:1fr;} }
   .about-photo{
     aspect-ratio:4/5; border-radius:8px;
-    background:linear-gradient(155deg,var(--steel) 0%, var(--navy) 100%);
-    display:flex;align-items:end;justify-content:start;position:relative;overflow:hidden;
+    overflow:hidden; position:relative;
+    box-shadow:0 14px 40px rgba(19,40,69,0.14);
+    border:1px solid var(--line);
+    background:var(--paper-2);
   }
-  .about-photo::after{
-    content:"";position:absolute;inset:0;
-    background:repeating-linear-gradient(115deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 40px);
-  }
-  .about-photo-label{
-    position:relative;color:var(--white);padding:24px;font-family:'Newsreader',serif;font-size:1.1rem;
+  .about-photo img{
+    width:100%; height:100%; object-fit:cover; display:block;
   }
   .about-copy p{color:var(--slate); margin-bottom:18px; font-size:1.02rem;}
   .credentials{
@@ -359,7 +357,7 @@
 <section class="about" id="about">
   <div class="wrap about-grid">
     <div class="about-photo reveal">
-      <div class="about-photo-label">Manish Gupta</div>
+      <img src="agent-photo.png" alt="Manish Gupta, MotorWise Insurance">
     </div>
     <div class="about-copy reveal" style="--reveal-delay:0.12s">
       <span class="eyebrow">About Your Agent</span>
