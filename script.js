@@ -51,18 +51,18 @@
     }
     if (submitBtn) submitBtn.disabled = true;
 
-    var payload = {
-      name: document.getElementById('name').value.trim(),
-      phone: document.getElementById('phone').value.trim(),
-      email: document.getElementById('email').value.trim(),
-      coverage: document.getElementById('coverage').value,
-      message: document.getElementById('message').value.trim()
-    };
+    var payload = new FormData();
+    payload.append('name', document.getElementById('name').value.trim());
+    payload.append('phone', document.getElementById('phone').value.trim());
+    payload.append('email', document.getElementById('email').value.trim());
+    payload.append('coverage', document.getElementById('coverage').value);
+    payload.append('message', document.getElementById('message').value.trim());
+    payload.append('_subject', 'New quote request — MotorWise Insurance');
 
     fetch(FORMSPREE_ENDPOINT, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
+      headers: { 'Accept': 'application/json' },
+      body: payload
     })
       .then(function (response) {
         if (response.ok) {
@@ -72,10 +72,14 @@
           }
           form.reset();
         } else {
-          throw new Error('Submission failed');
+          return response.json().then(function (data) {
+            console.error('Formspree rejected the submission:', data);
+            throw new Error('Submission failed');
+          });
         }
       })
-      .catch(function () {
+      .catch(function (err) {
+        console.error('Form submission error:', err);
         if (statusEl) {
           statusEl.textContent = "Something went wrong. Please call us directly at +91 80800 08300.";
           statusEl.className = 'form-status error';
