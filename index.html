@@ -125,47 +125,6 @@
     border:1px solid var(--line);
   }
 
-  /* Agent photo card — distinct entrance from the banner images below it */
-  .agent-photo-card{
-    max-width:340px; margin:0 auto 8px; text-align:center;
-  }
-  .agent-photo-frame{
-    border-radius:16px; overflow:hidden;
-    box-shadow:0 14px 40px rgba(19,40,69,0.18);
-    border:1px solid var(--line);
-    background:var(--paper-2);
-  }
-  .agent-photo-frame img{
-    width:100%; height:auto; display:block;
-    border-radius:0; border:none; box-shadow:none;
-    transition:transform 0.5s ease;
-  }
-  .agent-photo-card:hover .agent-photo-frame img{
-    transform:scale(1.04);
-  }
-  .agent-photo-card figcaption{
-    margin-top:16px; font-family:'Newsreader',serif; font-style:italic;
-    font-size:1.3rem; color:var(--navy); position:relative; display:inline-block;
-  }
-  .agent-photo-card figcaption::after{
-    content:""; display:block; height:2px; width:0; background:var(--teal);
-    margin:6px auto 0; transition:width 0.6s ease 0.3s;
-  }
-  .agent-photo-card.is-visible figcaption::after{ width:60px; }
-
-  /* Photo pop-in: scale + slight rotate, springier than the standard reveal */
-  .photo-pop{
-    opacity:0; transform:scale(0.82) rotate(-4deg);
-    transition:opacity 0.9s cubic-bezier(.34,1.56,.64,1), transform 0.9s cubic-bezier(.34,1.56,.64,1);
-  }
-  .photo-pop.is-visible{
-    opacity:1; transform:scale(1) rotate(0deg);
-  }
-  @media (prefers-reduced-motion: reduce){
-    .photo-pop{opacity:1; transform:none; transition:none;}
-    .agent-photo-card:hover .agent-photo-frame img{transform:none;}
-  }
-
   /* Sections */
   section{padding:96px 0;}
   .section-head{max-width:620px; margin-bottom:56px;}
@@ -343,12 +302,6 @@
 
 <section class="banner-promo">
   <div class="wrap">
-    <figure class="agent-photo-card reveal photo-pop">
-      <div class="agent-photo-frame">
-        <img src="agent-photo.png" alt="Manish Gupta, founder of MotorWise Insurance" loading="lazy">
-      </div>
-      <figcaption>Manish Gupta</figcaption>
-    </figure>
     <img class="reveal" src="banner-1.png" alt="MotorWise Insurance — Vehicle & General Insurance Advisor. All type of vehicle insurance available: truck, car, auto rickshaw, motorcycle, and scooter. WhatsApp 8080008300. Vastu Anand Shop No. 62, Parsik Nagar, Kalwa, Thane." loading="lazy">
     <img class="reveal" src="banner.png" alt="MotorWise Insurance banner" loading="lazy">
   </div>
