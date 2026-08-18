@@ -187,6 +187,9 @@
   .form-row{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
   @media (max-width:520px){ .form-row{grid-template-columns:1fr;} }
   label{font-size:0.82rem; font-weight:600; letter-spacing:.03em; margin-bottom:7px; display:block; color:#C7D3E3;}
+  .required-mark{color:#FF6B6B; font-weight:700;}
+  .optional-mark{color:#8EA3BE; font-weight:400; text-transform:none; letter-spacing:normal; font-size:0.9em;}
+  .required-note{font-size:0.8rem; color:#8EA3BE; margin:-6px 0 0;}
   input,select,textarea{
     width:100%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.18);
     border-radius:6px; padding:12px 14px; color:var(--white); font-family:'Inter',sans-serif; font-size:0.95rem;
@@ -396,12 +399,12 @@
           <input type="text" id="hp_confirm_9x2" name="hp_confirm_9x2" tabindex="-1" autocomplete="off">
         </div>
         <div class="form-row">
-          <div><label for="name">Full name</label><input id="name" type="text" placeholder="Rohan Sharma" required maxlength="80" pattern="[A-Za-z\s\.\'\-]+" title="Letters, spaces, and basic punctuation only"></div>
-          <div><label for="phone">Phone</label><input id="phone" type="tel" placeholder="98765 43210" required maxlength="15" pattern="[0-9+\s\(\)\-]{7,15}" title="A valid phone number"></div>
+          <div><label for="name">Full name <span class="required-mark" aria-hidden="true">*</span></label><input id="name" type="text" placeholder="Rohan Sharma" required maxlength="80" pattern="[A-Za-z\s\.\'\-]+" title="Letters, spaces, and basic punctuation only"></div>
+          <div><label for="phone">Phone <span class="required-mark" aria-hidden="true">*</span></label><input id="phone" type="tel" placeholder="98765 43210" required maxlength="15" pattern="[0-9+\s\(\)\-]{7,15}" title="A valid phone number"></div>
         </div>
         <div>
-          <label for="email">Email</label>
-          <input id="email" type="email" placeholder="rohan@email.com" required maxlength="120">
+          <label for="email">Email <span class="optional-mark">(optional)</span></label>
+          <input id="email" type="email" placeholder="rohan@email.com" maxlength="120" pattern="[a-zA-Z0-9\.\_\%\+\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}" title="Enter a complete email address, e.g. name@example.com">
         </div>
         <div>
           <label for="coverage">Coverage interested in</label>
@@ -418,6 +421,7 @@
           <label for="message">Tell us a bit more</label>
           <textarea id="message" placeholder="What are you looking to insure?" maxlength="800"></textarea>
         </div>
+        <p class="required-note"><span class="required-mark" aria-hidden="true">*</span> Required fields</p>
         <button type="submit" class="form-submit">Request my quote</button>
         <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
       </form>
