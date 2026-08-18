@@ -18,46 +18,72 @@
   items.forEach(function (el) { observer.observe(el); });
 })();
 
-// Contact form → opens the user's email app with a pre-filled draft
-// addressed to MotorWise. Nothing is sent automatically — the user
-// still has to hit "Send" themselves in their own mail app.
+// Contact form → submits silently to Formspree, which stores the
+// submission in your Formspree dashboard and emails it to you.
+// ⚠️ REPLACE THE LINE BELOW: swap YOUR_FORM_ID for the real endpoint
+// Formspree gives you after you create a form at formspree.io
 (function () {
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
   var form = document.getElementById('quote-form');
   if (!form) return;
+
+  var statusEl = document.getElementById('form-status');
+  var submitBtn = form.querySelector('.form-submit');
+  var formLoadTime = Date.now();
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    // Honeypot: if this hidden field got filled in, it's a bot — do nothing.
-    var honeypot = document.getElementById('company_website');
-    if (honeypot && honeypot.value.trim() !== '') return;
+    // Honeypot + timing check to filter out bots.
+    var honeypot = document.getElementById('hp_confirm_9x2');
+    var filledTooFast = (Date.now() - formLoadTime) < 1200;
+    if ((honeypot && honeypot.value.trim() !== '') || filledTooFast) return;
 
-    // Run the browser's normal required/pattern validation first.
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
 
-    var name = document.getElementById('name').value.trim();
-    var phone = document.getElementById('phone').value.trim();
-    var email = document.getElementById('email').value.trim();
-    var coverage = document.getElementById('coverage').value;
-    var message = document.getElementById('message').value.trim();
+    if (statusEl) {
+      statusEl.textContent = 'Sending…';
+      statusEl.className = 'form-status';
+    }
+    if (submitBtn) submitBtn.disabled = true;
 
-    var subject = 'Quote Request — ' + name;
-    var body =
-      'Name: ' + name + '\n' +
-      'Phone: ' + phone + '\n' +
-      'Email: ' + email + '\n' +
-      'Coverage interested in: ' + coverage + '\n\n' +
-      (message || 'No additional details provided.');
+    var payload = {
+      name: document.getElementById('name').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      coverage: document.getElementById('coverage').value,
+      message: document.getElementById('message').value.trim()
+    };
 
-    var mailtoUrl =
-      'mailto:motorwise1234@gmail.com' +
-      '?subject=' + encodeURIComponent(subject) +
-      '&body=' + encodeURIComponent(body);
-
-    window.location.href = mailtoUrl;
+    fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (response) {
+        if (response.ok) {
+          if (statusEl) {
+            statusEl.textContent = "Thanks! We've received your details and will reach out shortly.";
+            statusEl.className = 'form-status success';
+          }
+          form.reset();
+        } else {
+          throw new Error('Submission failed');
+        }
+      })
+      .catch(function () {
+        if (statusEl) {
+          statusEl.textContent = "Something went wrong. Please call us directly at +91 80800 08300.";
+          statusEl.className = 'form-status error';
+        }
+      })
+      .finally(function () {
+        if (submitBtn) submitBtn.disabled = false;
+      });
   });
 })();
 
